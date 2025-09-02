@@ -48,6 +48,9 @@ nav ul li{
   overflow: hidden;
   opacity: 0;
 }
+.gifImage.active{
+  opacity: 1;
+}
 .container{
   background-color: aqua;
   height:68vh;
@@ -65,7 +68,9 @@ nav ul li{
   height: 200px;
   width: 200px;
   border-radius: 100px;
-  animation: spinning 12s linear infinite;
+}
+.aniActive{
+  animation: spinning 12s linear infinite;  
 }
 @keyframes spinning{
   0%{transform: rotate(0deg);}
@@ -85,16 +90,36 @@ nav ul li{
   cursor: pointer;
 }
 .icons button{
+  position:relative;
   background: transparent;
   border: none;
   cursor: pointer;
   color: white;
+  align-items: center;
 }
 .icons button:active{
   background-color: rgb(134, 26, 38);
 }
 .icons{
   padding: 5px 0;
+}
+.Play2{
+  position: static;
+  overflow: hidden;
+  opacity:1;
+}
+.pause{
+  position:relative;
+  overflow: hidden;
+  left:-51%;
+  z-index: -1;
+  opacity:0;
+}
+.deactiveBtn{
+  opacity:0;
+}
+.activeBtn{
+  opacity: 1;
 }
 .musicName{
   position: absolute;
