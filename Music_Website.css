@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  margin:0;
+  min-height: 100vh;
+  background-color: #520e1f;
+  background-position: center;
+}
+nav{
+  font-family: "Poppins",sans-serif;
+  position: static;
+}
+nav ul{
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  height: 65px;
+  font-size: 10px;
+  color: rgb(205, 208, 14);
+  /* background-color: antiquewhite; */
+}
+nav ul li{
+  padding: 0 12px;
+  cursor: pointer;
+}
+.brand img{
+  width: 44px;
+  padding: 0 5px;
+  background: transparent;
+}
+.brand{
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  font-size: 20px;
+}
+.gifImage{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* keeps it behind */
+  overflow: hidden;
+  opacity: 0;
+}
+.container{
+  background-color: aqua;
+  height:68vh;
+  width: 70%;
+  margin: 23px auto;
+  color: antiquewhite;
+  background: url(background.jpg);
+  background-repeat: no-repeat; /* stop repeating */
+  background-size: cover;       /* cover width and height */
+  background-position: center;
+  padding: 23px;
+}
+.songItem img{
+  width: 20%;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  animation: spinning 12s linear infinite;
+}
+@keyframes spinning{
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+.bottom{
+  position: sticky;
+  height:90px;
+  bottom: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#myProgressBar{
+  width:97%;
+  cursor: pointer;
+}
+.icons button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.icons button:active{
+  background-color: rgb(134, 26, 38);
+}
+.icons{
+  padding: 5px 0;
+}
+.musicName{
+  position: absolute;
+  left:10%;
+  color: antiquewhite;
+  font-family: "Poppins",sans-serif;
+  text-transform: capitalize;
+}

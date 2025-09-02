@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Website</title>
+  <link rel="stylesheet" href="Music_Website.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li class="brand"><img src="musicBrand.png" alt="Music">Music</li>
+      <li>Home</li>
+      <li>About</li>
+    </ul>
+  </nav>
+
+  <img src="musicgif.gif" class="gifImage">
+
+  <div class="container">
+    <!-- <img src="background.jpg" class="imageBack" alt="background"> -->
+    <div class="songList">
+      <h1>Kumar Sanu Lovable Song</h1>
+      <div class="songItem">
+        <img src="songItem.png" alt="Kumar Sanu"><br>
+        <span>Dheere Dheere Se</span><br>
+        <span class="timing">03:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <input type="range" id="myProgressBar" min="0" max="100">
+    <div class="icons">
+      <button class="backward"><i class="fa-3x fa-solid fa-backward"></i></button>
+      <button class="Play2"><i class="fa-3x fa-solid fa-circle-play"></i></button>
+      <button class="forward"><i class="fa-3x fa-solid fa-forward"></i></button>
+    </div>
+    <span class="musicName">dheere dheere se</span>
+  </div>
+  <script src="https://kit.fontawesome.com/741ec021b3.js" crossorigin="anonymous"></script>
+  <script type="module" src="Music_Website.js"></script>
+</body>
+</html>
