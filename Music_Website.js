@@ -3,11 +3,13 @@ import {musicArray} from './music.js';
 const Play=document.querySelector('.Play2');
 const backward=document.querySelector('.backward');
 const forward=document.querySelector('.forward');
+
 let gifImage=document.querySelector('.gifImage');
 let albumCover=document.querySelector('.albumCover');
 let pauseBtn=document.querySelector('.pause');
 let musicName=document.querySelector('.musicName');
 let musicName2=document.querySelector('.musicName2');
+let progressBar=document.getElementById('myProgressBar');
 
 let musicIndex=0;
 let audio=new Audio(musicArray[musicIndex].songItem);
@@ -63,4 +65,9 @@ forward.addEventListener('click',()=>{
   pauseBtn.classList.add('activeBtn');
   audio.play();
   isMusicPlay=true;
+});
+
+audio.addEventListener('timeupdate',()=>{
+  let progress=parseInt((audio.currentTime/audio.duration)*100); 
+  progressBar.value=progress;
 })

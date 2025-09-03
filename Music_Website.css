@@ -47,6 +47,7 @@ nav ul li{
   z-index: -1; /* keeps it behind */
   overflow: hidden;
   opacity: 0;
+  transition: opacity 0.4s ease-in-out;
 }
 .gifImage.active{
   opacity: 1;
