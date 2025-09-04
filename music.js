@@ -1,4 +1,4 @@
-export const musicArray=[
+const musicArray1=[
   {    
     songName:'Aa Seetadevi Navvula',
     songItem:"Music/Music_1.mp3",
@@ -45,3 +45,10 @@ export const musicArray=[
     songAlbum:'Music/Music_9.jpg',
   },
 ]
+
+for(let i=musicArray1.length-1 ; i > 0 ; i--){
+  let j=Math.floor(Math.random() * (i+1));
+  [musicArray1[i],musicArray1[j]]=[musicArray1[j],musicArray1[i]];
+}
+
+export const musicArray=musicArray1;
