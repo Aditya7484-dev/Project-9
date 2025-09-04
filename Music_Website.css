@@ -89,6 +89,7 @@ nav ul li{
 #myProgressBar{
   width:97%;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 .icons button{
   position:relative;
