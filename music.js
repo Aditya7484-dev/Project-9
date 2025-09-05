@@ -44,6 +44,11 @@ const musicArray1=[
     songItem:"Music/Music_9.mp3",
     songAlbum:'Music/Music_9.jpg',
   },
+  {
+    songName:'Russian Bandana',
+    songItem:"Music/Music_10.mp3",
+    songAlbum:'Music/Music_10.jpg',
+  },
 ]
 
 for(let i=musicArray1.length-1 ; i > 0 ; i--){
