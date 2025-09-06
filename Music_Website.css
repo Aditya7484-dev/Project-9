@@ -75,24 +75,6 @@ nav ul li {
 .duration{
   opacity:0;
 }
-.aniActive {
-  animation: spinning 12s linear infinite;
-  animation: glow 100ms linear infinite;
-}
-@keyframes spinning {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes glow{
-  0%{box-shadow: 0 0 5px #ff5d8f;}
-  50%{box-shadow: 0 0 15px #0df0a8;}
-  70%{box-shadow: 0 0 25px #ff5d8f;}
-  100%{box-shadow:0 0 15px #c4dd08, 0 0 50px #ff5d8f;}
-}
 .bottom {
   position: sticky;
   height: 90px;
@@ -114,6 +96,9 @@ nav ul li {
   cursor: pointer;
   color: white;
   align-items: center;
+}
+.icons button:hover{
+  animation: glow 700ms linear infinite;
 }
 .icons {
   padding: 5px 0;
@@ -152,4 +137,30 @@ nav ul li {
 }
 .active {
   opacity: 1;
+}
+.discoBall{
+  position:absolute;
+  top: 0;
+  left:33%;
+  width: 30%;
+  opacity: 0;
+}
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spin{
+  animation: spinning 12s linear infinite, glow 700ms linear infinite;
+}
+@keyframes glow{
+  0%{box-shadow: 0 0 5px #ff5d8f;}
+  20%{box-shadow: 0 0 15px #ff5d8f;}
+  40%{box-shadow: 0 0 25px #0df0a8;}
+  60%{box-shadow: 0 0 25px #0df0a8;}
+  80%{box-shadow: 0 0 15px #ff5d8f;}
+  100%{box-shadow:0 0 5px #c4dd08, 0 0 50px #ff5d8f;}
 }

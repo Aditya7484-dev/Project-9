@@ -10,6 +10,7 @@ let gifImage=document.querySelector('.gifImage');
 let songDuration=document.querySelector('.duration');
 let currentTime=document.querySelector('.currentTime');
 let progressBar=document.getElementById('myProgressBar');
+let discoBall=document.querySelector('.discoBall');
 
 let musicIndex=0;
 const audio=new Audio(musicArray[musicIndex].songItem);
@@ -17,6 +18,10 @@ audio.addEventListener('loadedmetadata',()=>{
   audio.duration;
   showMe();
 });
+
+document.addEventListener('keypress',(e)=>{
+  console.log(e.key);
+})
 
 let isMusicPlaying=false;
 
@@ -63,14 +68,17 @@ forwardBtn.addEventListener('click',()=>{
 });
 
 function showAlbum(songIndex,trig){
-  if(trig==='Y'){
-    songAlbum.classList.add('aniActive');
-    gifImage.classList.add('active');
-  }else{
-    songAlbum.classList.remove('aniActive');    
-    gifImage.classList.remove('active');
-  }
   songAlbum.src=musicArray[songIndex].songAlbum;
+
+  if(trig==='Y'){
+    songAlbum.classList.add('spin');
+    gifImage.classList.add('active');
+    discoBall.style.opacity=1;
+  }else{   
+    songAlbum.classList.remove('spin');
+    gifImage.classList.remove('active');
+    discoBall.style.opacity=0;
+  }
 }
 
 function showName(songIndex){
