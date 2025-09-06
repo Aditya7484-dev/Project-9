@@ -10,17 +10,34 @@ let gifImage=document.querySelector('.gifImage');
 let songDuration=document.querySelector('.duration');
 let currentTime=document.querySelector('.currentTime');
 let progressBar=document.getElementById('myProgressBar');
+let volumeBtn=document.getElementById('myVolBtn');
 let discoBall=document.querySelector('.discoBall');
 
 let musicIndex=0;
 const audio=new Audio(musicArray[musicIndex].songItem);
 audio.addEventListener('loadedmetadata',()=>{
   audio.duration;
+  audio.volume=(volumeBtn.value/100);
   showMe();
 });
 
-document.addEventListener('keypress',(e)=>{
-  console.log(e.key);
+document.addEventListener('keydown',(e)=>{
+  let currentVol=parseInt(volumeBtn.value);
+  if(e.ctrlKey&&e.key==="h"){
+    e.preventDefault();
+    if(currentVol<100){
+      currentVol=Math.min(currentVol + 5,100);
+      volumeBtn.value=currentVol;
+      audio.volume=volumeBtn.value/100;
+    }
+  }else if(e.ctrlKey&&e.key==='l'){
+    e.preventDefault();
+    if(currentVol>0){
+      currentVol=parseInt(currentVol - 5,0);
+      volumeBtn.value=currentVol;
+      audio.volume=volumeBtn.value/100;
+    }
+  }
 })
 
 let isMusicPlaying=false;
@@ -74,10 +91,12 @@ function showAlbum(songIndex,trig){
     songAlbum.classList.add('spin');
     gifImage.classList.add('active');
     discoBall.style.opacity=1;
+    volumeBtn.style.opacity=1;
   }else{   
     songAlbum.classList.remove('spin');
     gifImage.classList.remove('active');
     discoBall.style.opacity=0;
+    volumeBtn.style.opacity=0;
   }
 }
 
@@ -108,4 +127,7 @@ audio.addEventListener('timeupdate',()=>{
 
 progressBar.addEventListener('input',()=>{
   audio.currentTime=(progressBar.value/100) * audio.duration;
+});
+volumeBtn.addEventListener('input',()=>{
+  audio.volume=volumeBtn.value/100;
 });

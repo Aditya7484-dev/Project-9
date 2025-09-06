@@ -135,6 +135,22 @@ nav ul li {
   color: #fff;
   right: 26px;
 }
+#myVolBtn{
+  position: absolute;
+  right: 5%;
+  bottom: 41%;
+  height: 2px;
+  cursor: pointer;
+  opacity:0;
+}
+#myVolBtn::before{
+content: "🔈";
+opacity: 1;
+position: absolute;
+right: 128px;
+margin-top: -13%;
+font-size: 24px;
+}
 .active {
   opacity: 1;
 }
@@ -144,6 +160,7 @@ nav ul li {
   left:33%;
   width: 30%;
   opacity: 0;
+  transition: opacity 0.2s linear;
 }
 @keyframes spinning {
   0% {
@@ -154,6 +171,7 @@ nav ul li {
   }
 }
 .spin{
+  transition: glow 3s ease;
   animation: spinning 12s linear infinite, glow 700ms linear infinite;
 }
 @keyframes glow{
