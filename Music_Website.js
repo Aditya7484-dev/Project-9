@@ -15,6 +15,8 @@ let discoBall=document.querySelector('.discoBall');
 
 let musicIndex=0;
 const audio=new Audio(musicArray[musicIndex].songItem);
+let isMusicPlaying=false;
+
 audio.addEventListener('loadedmetadata',()=>{
   audio.duration;
   audio.volume=(volumeBtn.value/100);
@@ -38,9 +40,7 @@ document.addEventListener('keydown',(e)=>{
       audio.volume=volumeBtn.value/100;
     }
   }
-})
-
-let isMusicPlaying=false;
+});
 
 playBtn.addEventListener('click',()=>{
   if(isMusicPlaying){
@@ -128,6 +128,7 @@ audio.addEventListener('timeupdate',()=>{
 progressBar.addEventListener('input',()=>{
   audio.currentTime=(progressBar.value/100) * audio.duration;
 });
+
 volumeBtn.addEventListener('input',()=>{
   audio.volume=volumeBtn.value/100;
 });
