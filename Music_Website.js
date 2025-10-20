@@ -86,7 +86,6 @@ forwardBtn.addEventListener('click',()=>{
 
 function showAlbum(songIndex,trig){
   songAlbum.src=musicArray[songIndex].songAlbum;
-
   if(trig==='Y'){
     songAlbum.classList.add('spin');
     gifImage.classList.add('active');
@@ -122,13 +121,22 @@ function formateTime(audioDur){
 audio.addEventListener('timeupdate',()=>{
   let progress=parseInt((audio.currentTime/audio.duration)*100); 
   progressBar.value=progress;
-  currentTime.innerHTML=formateTime(audio.currentTime);
+  currentTime.innerHTML=formateTime(audio.currentTime); 
 });
 
 progressBar.addEventListener('input',()=>{
   audio.currentTime=(progressBar.value/100) * audio.duration;
+  audio.play();
 });
 
 volumeBtn.addEventListener('input',()=>{
   audio.volume=volumeBtn.value/100;
 });
+function audioChecking(){
+  if(audio.ended()){
+    audio.play();
+  }else{
+    console.log("Audio Is Playig");
+  }
+}
+audioChecking();
