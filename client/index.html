@@ -1,36 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Music App</title>
-</head>
-<body>
+  <head>
+    <title>Music App</title>
+  </head>
+  <body>
+    <h2>🎵 My Music App</h2>
 
-<h2>🎵 My Music App</h2>
+    <ul id="songList"></ul>
 
-<ul id="songList"></ul>
+    <h3 id="nowPlaying">Nothing playing</h3>
 
-<audio id="player" controls></audio>
+    <button onclick="playSong()">▶️ Play</button>
+    <button onclick="pauseSong()">⏸️ Pause</button>
 
-<script>
-fetch("http://localhost:5000/api/songs")
-  .then(res => res.json())
-  .then(songs => {
-    const list = document.getElementById("songList");
-    const player = document.getElementById("player");
+    <br /><br />
 
-    songs.forEach(song => {
-      const li = document.createElement("li");
-      li.textContent = song.title + " - " + song.artist;
+    <audio id="player"></audio>
 
-      li.onclick = () => {
-        player.src = "http://localhost:5000" + song.fileUrl;
-        player.play();
-      };
+    <script>
+      let currentSong = null;
+      const player = document.getElementById("player");
+      const nowPlaying = document.getElementById("nowPlaying");
 
-      list.appendChild(li);
-    });
-  });
-</script>
+      function playSong() {
+        if (currentSong) player.play();
+      }
 
-</body>
+      function pauseSong() {
+        player.pause();
+      }
+
+      fetch("http://localhost:5000/api/songs")
+        .then((res) => res.json())
+        .then((songs) => {
+          const list = document.getElementById("songList");
+
+          songs.forEach((song) => {
+            const li = document.createElement("li");
+            li.textContent = song.title + " - " + song.artist;
+
+            li.onclick = () => {
+              currentSong = song;
+              player.src = "http://localhost:5000" + song.fileUrl;
+              player.play();
+
+              nowPlaying.textContent = "Now Playing: " + song.title;
+            };
+
+            list.appendChild(li);
+          });
+        });
+    </script>
+  </body>
 </html>
