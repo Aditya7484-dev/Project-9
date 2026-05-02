@@ -10,15 +10,19 @@ const getSongs = async (req, res) => {
   }
 };
 
-// ➕ ADD SONG
+// ADD SONG
 const addSong = async (req, res) => {
   try {
     const { title, artist } = req.body;
 
     const newSong = new Song({
       title,
-      artist
+      artist,
+      fileUrl: req.file ? `/uploads/${req.file.filename}` : "",
     });
+
+    console.log(req.body);
+    console.log(req.file);
 
     const savedSong = await newSong.save();
 
