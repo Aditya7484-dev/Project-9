@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music App</title>
+</head>
+<body>
+
+<h2>🎵 My Music App</h2>
+
+<ul id="songList"></ul>
+
+<audio id="player" controls></audio>
+
+<script>
+fetch("http://localhost:5000/api/songs")
+  .then(res => res.json())
+  .then(songs => {
+    const list = document.getElementById("songList");
+    const player = document.getElementById("player");
+
+    songs.forEach(song => {
+      const li = document.createElement("li");
+      li.textContent = song.title + " - " + song.artist;
+
+      li.onclick = () => {
+        player.src = "http://localhost:5000" + song.fileUrl;
+        player.play();
+      };
+
+      list.appendChild(li);
+    });
+  });
+</script>
+
+</body>
+</html>
