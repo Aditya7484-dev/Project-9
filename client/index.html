@@ -2,10 +2,17 @@
 <html>
   <head>
     <title>Music App</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h2>🎵 My Music App</h2>
 
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search songs..."
+      style="padding: 10px; width: 250px; margin: 10px"
+    />
     <ul id="songList"></ul>
 
     <h3 id="nowPlaying">Nothing playing</h3>
@@ -13,43 +20,12 @@
     <button onclick="playSong()">▶️ Play</button>
     <button onclick="pauseSong()">⏸️ Pause</button>
 
+    <button onclick="prevSong()">⏮️ Previous</button>
+    <button onclick="nextSong()">⏭️ Next</button>
+
     <br /><br />
 
     <audio id="player"></audio>
-
-    <script>
-      let currentSong = null;
-      const player = document.getElementById("player");
-      const nowPlaying = document.getElementById("nowPlaying");
-
-      function playSong() {
-        if (currentSong) player.play();
-      }
-
-      function pauseSong() {
-        player.pause();
-      }
-
-      fetch("http://localhost:5000/api/songs")
-        .then((res) => res.json())
-        .then((songs) => {
-          const list = document.getElementById("songList");
-
-          songs.forEach((song) => {
-            const li = document.createElement("li");
-            li.textContent = song.title + " - " + song.artist;
-
-            li.onclick = () => {
-              currentSong = song;
-              player.src = "http://localhost:5000" + song.fileUrl;
-              player.play();
-
-              nowPlaying.textContent = "Now Playing: " + song.title;
-            };
-
-            list.appendChild(li);
-          });
-        });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
